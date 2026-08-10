@@ -17,9 +17,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// ---------------------------------------------------------------------------
 // Usuários, sessões e controle de acesso
-// ---------------------------------------------------------------------------
 
 model User {
   id           String   @id @default(cuid())
@@ -72,9 +70,7 @@ model Address {
   @@index([userId])
 }
 
-// ---------------------------------------------------------------------------
 // Catálogo
-// ---------------------------------------------------------------------------
 
 model Category {
   id          String  @id @default(cuid())
@@ -166,9 +162,7 @@ model KitItem {
   @@unique([kitId, productId])
 }
 
-// ---------------------------------------------------------------------------
 // Pedidos
-// ---------------------------------------------------------------------------
 
 model Order {
   id     String  @id @default(cuid())
@@ -287,9 +281,7 @@ model DownloadGrant {
   @@index([userId])
 }
 
-// ---------------------------------------------------------------------------
 // Operação da loja
-// ---------------------------------------------------------------------------
 
 /// Configurações editáveis pelo painel, que permitem mudar regras da loja
 /// (frete grátis, imposto padrão, chave PIX, retirada) sem programar.

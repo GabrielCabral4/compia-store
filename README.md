@@ -43,16 +43,21 @@ inclusive criar produtos e categorias, sem escrever código.
 
 ## Como rodar
 
-Pré-requisito: Node.js 20.9 ou superior. Nada além disso, porque o banco padrão
-é SQLite e não precisa de instalação.
+Pré-requisito: Node.js 20.9 ou superior. Nada além disso, porque o banco de
+desenvolvimento é SQLite e não precisa de instalação.
 
 ```bash
 cd compia-store
 cp .env.example .env      # no Windows: copy .env.example .env
 npm install
+npm run db:sqlite         # aponta o schema para SQLite
 npm run setup             # cria o banco, gera o cliente Prisma e popula os dados
 npm run dev               # http://localhost:3000
 ```
+
+O schema versionado fica em PostgreSQL, que é o banco usado na Vercel. Os
+scripts `npm run db:sqlite` e `npm run db:postgres` alternam entre os dois, e
+nenhum modelo precisa mudar por causa disso.
 
 Scripts disponíveis:
 
