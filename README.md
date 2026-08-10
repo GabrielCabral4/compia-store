@@ -8,6 +8,9 @@ Acadêmica de Sistemas e Computação.
 
 > **Aluno:** _(preencher)_ · **Matrícula:** _(preencher)_ · **Período:** _(preencher)_
 
+**🔗 Loja publicada:** <https://compia-store-mu.vercel.app>
+**Acesso ao painel:** `admin@compia.com.br` / `compia123`
+
 A loja vende livros físicos, e-books e kits; aceita **PIX** (QR Code com chave
 aleatória) e **cartão de crédito** das principais bandeiras; calcula **frete e
 impostos**; oferece **Correios, transportadora, retirada no local e entrega
