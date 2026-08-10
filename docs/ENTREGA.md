@@ -15,26 +15,21 @@ disciplina.
 | Mapa requisito × implementação | pronto | seção "Requisitos do projeto × implementação" do `README.md` |
 | Testes automatizados | 27 testes | `npm test` |
 | Loja publicada com HTTPS | **a fazer por você** | seção 3 deste guia |
-| Identificação da equipe | **a fazer por você** | seção 2 deste guia |
+| Identificação da equipe | pronta | tabela no topo do `README.md` |
 
 ---
 
 ## 2. Antes de publicar
 
-### 2.1 Coloque seu nome no projeto
+### 2.1 Identificação da equipe
 
-A especificação vem com a capa institucional da UFCG. Preencha a autoria em dois
-lugares:
+A especificação não define formato de entrega nem exige identificação em lugar
+específico — mas, como ela vem com a capa institucional da UFCG, os nomes da
+equipe estão no topo do `README.md`, que é o primeiro arquivo visto ao abrir o
+repositório.
 
-1. No topo do `README.md`, logo abaixo do título, acrescente algo como:
-
-   ```markdown
-   **Aluno:** Seu Nome Completo — Matrícula 000000000
-   **Disciplina:** Programação para Web — UFCG/CEEI/UASC — 2026.1
-   ```
-
-2. Em `/admin/configuracoes`, ajuste nome, e-mail, telefone e CNPJ da loja se o
-   professor pedir dados específicos.
+Se o professor pedir dados específicos da editora (nome, CNPJ, contato), eles
+são editáveis em `/admin/configuracoes`, sem alterar código.
 
 ### 2.2 Troque o segredo da aplicação
 

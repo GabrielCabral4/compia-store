@@ -6,7 +6,13 @@ bibliográficos da área de Inteligência Artificial.
 Projeto da disciplina de **Programação para Web** — UFCG / CEEI / Unidade
 Acadêmica de Sistemas e Computação.
 
-> **Aluno:** _(preencher)_ · **Matrícula:** _(preencher)_ · **Período:** _(preencher)_
+**Equipe**
+
+| Aluno | Matrícula |
+| --- | --- |
+| Gabriel Cabral de Medeiros | 122210158 |
+| Vitor Schuler Borges Veloso | 123110668 |
+| Axel Vaz Souto Lima | 122210109 |
 
 **🔗 Loja publicada:** <https://compia-store-mu.vercel.app>
 **Acesso ao painel:** `admin@compia.com.br` / `compia123`
