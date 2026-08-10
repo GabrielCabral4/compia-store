@@ -1,15 +1,24 @@
+/**
+ * O fuso é fixado no horário de Brasília de propósito: em produção o servidor
+ * roda em UTC, e sem isso um pedido feito às 21h apareceria como sendo do dia
+ * seguinte para o cliente e para a equipe da editora.
+ */
+const TIME_ZONE = "America/Sao_Paulo";
+
 const DATE_TIME = new Intl.DateTimeFormat("pt-BR", {
   day: "2-digit",
   month: "2-digit",
   year: "numeric",
   hour: "2-digit",
   minute: "2-digit",
+  timeZone: TIME_ZONE,
 });
 
 const DATE_ONLY = new Intl.DateTimeFormat("pt-BR", {
   day: "2-digit",
   month: "2-digit",
   year: "numeric",
+  timeZone: TIME_ZONE,
 });
 
 export function formatDateTime(value: Date | string | null | undefined): string {
