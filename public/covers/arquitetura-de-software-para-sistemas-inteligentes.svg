@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800" role="img" aria-label="Arquitetura de Software para Sistemas Inteligentes">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f766e"/>
+      <stop offset="100%" stop-color="#84cc16"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.07" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="600" height="800" fill="url(#bg)"/>
+  <rect width="600" height="800" fill="url(#grid)"/>
+  <circle cx="500" cy="120" r="170" fill="#ffffff" fill-opacity="0.06"/>
+  <circle cx="90" cy="700" r="130" fill="#000000" fill-opacity="0.10"/>
+  <rect x="0" y="0" width="14" height="800" fill="#000000" fill-opacity="0.22"/>
+
+  <g font-family="Helvetica, Arial, sans-serif">
+    <text x="60" y="96" fill="#ffffff" fill-opacity="0.95" font-size="26" font-weight="bold" letter-spacing="6">COMPIA</text>
+    <text x="60" y="126" fill="#ffffff" fill-opacity="0.65" font-size="15" letter-spacing="1.5">EDITORA</text>
+    <text x="60" y="200" fill="#ffffff" fill-opacity="0.75" font-size="17" letter-spacing="1">ARQUITETURA DE SOFTWARE INTELIGENTE</text>
+    <line x1="60" y1="222" x2="200" y2="222" stroke="#ffffff" stroke-opacity="0.5" stroke-width="3"/>
+
+    <text x="60" y="330" fill="#ffffff" font-size="44" font-weight="bold">Arquitetura de</text>
+    <text x="60" y="382" fill="#ffffff" font-size="44" font-weight="bold">Software para</text>
+    <text x="60" y="434" fill="#ffffff" font-size="44" font-weight="bold">Sistemas</text>
+    <text x="60" y="486" fill="#ffffff" font-size="44" font-weight="bold">Inteligentes</text>
+
+    <text x="60" y="562" fill="#ffffff" fill-opacity="0.8" font-size="22">Padrões para produtos que aprendem</text>
+
+    <text x="60" y="720" fill="#ffffff" fill-opacity="0.9" font-size="22" font-weight="bold">Paulo Henrique Ramalho</text>
+    
+  </g>
+</svg>

@@ -1,26 +1,243 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ---------------------------------------------------------------------------
+   Identidade visual da COMPIA Editora
+   --------------------------------------------------------------------------- */
+
+@theme {
+  --color-ink-50: #f6f7fb;
+  --color-ink-100: #eceef6;
+  --color-ink-200: #d6dae9;
+  --color-ink-300: #b3bad3;
+  --color-ink-400: #8892b4;
+  --color-ink-500: #667097;
+  --color-ink-600: #4d5679;
+  --color-ink-700: #3b4160;
+  --color-ink-800: #262a45;
+  --color-ink-900: #16182c;
+  --color-ink-950: #0b0c18;
+
+  --color-brand-50: #eef2ff;
+  --color-brand-100: #e0e7ff;
+  --color-brand-200: #c7d2fe;
+  --color-brand-300: #a5b4fc;
+  --color-brand-400: #818cf8;
+  --color-brand-500: #6366f1;
+  --color-brand-600: #4f46e5;
+  --color-brand-700: #4338ca;
+  --color-brand-800: #3730a3;
+  --color-brand-900: #312e81;
+
+  --color-accent-400: #fbbf24;
+  --color-accent-500: #f59e0b;
+  --color-accent-600: #d97706;
+
+  --font-sans:
+    ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    background-color: var(--color-ink-50);
+    color: var(--color-ink-900);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: var(--color-brand-200);
+  }
+
+  /* Foco visível e consistente em toda a aplicação (acessibilidade). */
+  :focus-visible {
+    outline: 2px solid var(--color-brand-600);
+    outline-offset: 2px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .container-page {
+    width: 100%;
+    margin-inline: auto;
+    max-width: 80rem;
+    padding-inline: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .container-page {
+      padding-inline: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container-page {
+      padding-inline: 2rem;
+    }
+  }
+
+  .card {
+    background-color: #fff;
+    border: 1px solid var(--color-ink-200);
+    border-radius: 1rem;
+    box-shadow: 0 1px 2px rgb(11 12 24 / 0.04);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 0.625rem;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    padding: 0.625rem 1.125rem;
+    line-height: 1.25rem;
+    transition: background-color 120ms ease, color 120ms ease,
+      border-color 120ms ease, opacity 120ms ease;
+    cursor: pointer;
+    border: 1px solid transparent;
+    text-align: center;
+  }
+
+  .btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+
+  .btn-primary {
+    background-color: var(--color-brand-600);
+    color: #fff;
+  }
+  .btn-primary:hover:not(:disabled) {
+    background-color: var(--color-brand-700);
+  }
+
+  .btn-dark {
+    background-color: var(--color-ink-900);
+    color: #fff;
+  }
+  .btn-dark:hover:not(:disabled) {
+    background-color: var(--color-ink-800);
+  }
+
+  .btn-outline {
+    background-color: #fff;
+    border-color: var(--color-ink-300);
+    color: var(--color-ink-800);
+  }
+  .btn-outline:hover:not(:disabled) {
+    background-color: var(--color-ink-100);
+  }
+
+  .btn-ghost {
+    background-color: transparent;
+    color: var(--color-ink-700);
+  }
+  .btn-ghost:hover:not(:disabled) {
+    background-color: var(--color-ink-100);
+  }
+
+  .btn-danger {
+    background-color: #dc2626;
+    color: #fff;
+  }
+  .btn-danger:hover:not(:disabled) {
+    background-color: #b91c1c;
+  }
+
+  .btn-sm {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.8125rem;
+    border-radius: 0.5rem;
+  }
+
+  .field-label {
+    display: block;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-ink-700);
+    margin-bottom: 0.375rem;
+  }
+
+  .field-input {
+    display: block;
+    width: 100%;
+    border-radius: 0.625rem;
+    border: 1px solid var(--color-ink-300);
+    background-color: #fff;
+    padding: 0.5625rem 0.75rem;
+    font-size: 0.9375rem;
+    color: var(--color-ink-900);
+  }
+
+  .field-input::placeholder {
+    color: var(--color-ink-400);
+  }
+
+  .field-input:disabled {
+    background-color: var(--color-ink-100);
+    color: var(--color-ink-500);
+  }
+
+  .field-hint {
+    font-size: 0.75rem;
+    color: var(--color-ink-500);
+    margin-top: 0.25rem;
+  }
+
+  .field-error {
+    font-size: 0.75rem;
+    color: #dc2626;
+    margin-top: 0.25rem;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    border-radius: 9999px;
+    padding: 0.125rem 0.625rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.25rem;
+    white-space: nowrap;
+  }
+
+  .table-base {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+  }
+
+  .table-base thead th {
+    text-align: left;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--color-ink-500);
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--color-ink-200);
+    white-space: nowrap;
+  }
+
+  .table-base tbody td {
+    padding: 0.875rem 1rem;
+    border-bottom: 1px solid var(--color-ink-100);
+    vertical-align: middle;
+  }
+
+  .table-base tbody tr:hover {
+    background-color: var(--color-ink-50);
+  }
+
+  .prose-compia p {
+    margin-bottom: 0.875rem;
+    line-height: 1.7;
+  }
 }

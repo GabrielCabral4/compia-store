@@ -1,0 +1,328 @@
+// COMPIA Editora — modelo de dados da loja virtual
+//
+// Observação: os campos de "enum" são String porque o SQLite (banco usado em
+// desenvolvimento) não suporta enums no Prisma. Os valores válidos estão
+// centralizados em src/lib/constants.ts. Ao migrar para PostgreSQL basta trocar
+// o `provider` do datasource abaixo — nenhum modelo precisa mudar.
+//
+// Valores monetários são sempre inteiros em CENTAVOS, evitando erros de
+// arredondamento de ponto flutuante.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ---------------------------------------------------------------------------
+// Usuários, sessões e controle de acesso
+// ---------------------------------------------------------------------------
+
+model User {
+  id           String   @id @default(cuid())
+  name         String
+  email        String   @unique
+  passwordHash String
+  // ADMIN | EDITOR | VENDEDOR | CLIENTE
+  role         String   @default("CLIENTE")
+  cpf          String?
+  phone        String?
+  active       Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  addresses      Address[]
+  orders         Order[]
+  sessions       Session[]
+  activityLogs   ActivityLog[]
+  downloadGrants DownloadGrant[]
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  userId    String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model Address {
+  id         String  @id @default(cuid())
+  userId     String
+  label      String  @default("Principal")
+  recipient  String
+  cep        String
+  street     String
+  number     String
+  complement String?
+  district   String
+  city       String
+  state      String
+  isDefault  Boolean @default(false)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+// ---------------------------------------------------------------------------
+// Catálogo
+// ---------------------------------------------------------------------------
+
+model Category {
+  id          String  @id @default(cuid())
+  name        String  @unique
+  slug        String  @unique
+  description String?
+  position    Int     @default(0)
+
+  products Product[]
+}
+
+model Tag {
+  id   String @id @default(cuid())
+  name String @unique
+  slug String @unique
+
+  products Product[] @relation("ProductTags")
+}
+
+model Product {
+  id          String  @id @default(cuid())
+  sku         String  @unique
+  slug        String  @unique
+  title       String
+  subtitle    String?
+  description String
+  // FISICO | DIGITAL | KIT
+  type        String  @default("FISICO")
+
+  priceCents        Int
+  compareAtCents    Int?
+  stock             Int     @default(0)
+  weightGrams       Int     @default(500)
+  // Alíquota efetiva de imposto do item, em pontos base (ex.: 900 = 9,00%).
+  taxRateBasisPoints Int    @default(0)
+
+  author    String?
+  isbn      String?
+  pages     Int?
+  edition   String?
+  year      Int?
+  language  String  @default("Português")
+
+  // Arquivo entregue automaticamente em produtos digitais.
+  digitalFileName String?
+  digitalFileUrl  String?
+
+  active     Boolean @default(true)
+  featured   Boolean @default(false)
+  categoryId String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  category       Category        @relation(fields: [categoryId], references: [id])
+  tags           Tag[]           @relation("ProductTags")
+  images         ProductImage[]
+  orderItems     OrderItem[]
+  downloadGrants DownloadGrant[]
+  kitItems       KitItem[]       @relation("KitToItems")
+  inKits         KitItem[]       @relation("ProductInKits")
+
+  @@index([categoryId])
+  @@index([type])
+}
+
+model ProductImage {
+  id        String @id @default(cuid())
+  productId String
+  url       String
+  alt       String @default("")
+  position  Int    @default(0)
+
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@index([productId])
+}
+
+/// Composição de um produto do tipo KIT.
+model KitItem {
+  id        String @id @default(cuid())
+  kitId     String
+  productId String
+  quantity  Int    @default(1)
+
+  kit     Product @relation("KitToItems", fields: [kitId], references: [id], onDelete: Cascade)
+  product Product @relation("ProductInKits", fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([kitId, productId])
+}
+
+// ---------------------------------------------------------------------------
+// Pedidos
+// ---------------------------------------------------------------------------
+
+model Order {
+  id     String  @id @default(cuid())
+  number String  @unique
+  userId String?
+
+  customerName  String
+  customerEmail String
+  customerCpf   String?
+  customerPhone String?
+
+  // PENDENTE_PAGAMENTO | PAGO | EM_SEPARACAO | ENVIADO | PRONTO_RETIRADA | ENTREGUE | CANCELADO
+  status String @default("PENDENTE_PAGAMENTO")
+
+  subtotalCents Int
+  shippingCents Int @default(0)
+  taxCents      Int @default(0)
+  discountCents Int @default(0)
+  totalCents    Int
+
+  // PAC | SEDEX | TRANSPORTADORA | RETIRADA_LOCAL | DIGITAL
+  shippingMethod  String
+  shippingCarrier String?
+  shippingEtaDays Int?
+  trackingCode    String?
+
+  shipCep        String?
+  shipStreet     String?
+  shipNumber     String?
+  shipComplement String?
+  shipDistrict   String?
+  shipCity       String?
+  shipState      String?
+
+  notes     String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  paidAt    DateTime?
+  shippedAt DateTime?
+
+  user           User?           @relation(fields: [userId], references: [id])
+  items          OrderItem[]
+  payment        Payment?
+  downloadGrants DownloadGrant[]
+
+  @@index([userId])
+  @@index([status])
+}
+
+model OrderItem {
+  id        String  @id @default(cuid())
+  orderId   String
+  productId String?
+
+  titleSnapshot String
+  skuSnapshot   String
+  typeSnapshot  String
+  unitCents     Int
+  quantity      Int
+  taxCents      Int @default(0)
+
+  order   Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product Product? @relation(fields: [productId], references: [id])
+
+  @@index([orderId])
+}
+
+model Payment {
+  id      String @id @default(cuid())
+  orderId String @unique
+
+  // PIX | CARTAO_CREDITO
+  method String
+  // AGUARDANDO | APROVADO | RECUSADO | ESTORNADO
+  status String @default("AGUARDANDO")
+
+  amountCents Int
+  provider    String  @default("compia-gateway-sandbox")
+  providerRef String?
+
+  cardBrand    String?
+  cardLast4    String?
+  cardHolder   String?
+  installments Int?
+
+  pixKey       String?
+  pixTxid      String?
+  pixPayload   String?
+  pixExpiresAt DateTime?
+
+  createdAt DateTime  @default(now())
+  paidAt    DateTime?
+
+  order Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
+}
+
+/// Autorização de download de um e-book, gerada automaticamente na aprovação
+/// do pagamento.
+model DownloadGrant {
+  id        String @id @default(cuid())
+  token     String @unique
+  orderId   String
+  productId String
+  userId    String?
+
+  maxDownloads  Int      @default(5)
+  downloadCount Int      @default(0)
+  expiresAt     DateTime
+  createdAt     DateTime @default(now())
+
+  order   Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product Product @relation(fields: [productId], references: [id])
+  user    User?   @relation(fields: [userId], references: [id])
+
+  @@index([orderId])
+  @@index([userId])
+}
+
+// ---------------------------------------------------------------------------
+// Operação da loja
+// ---------------------------------------------------------------------------
+
+/// Configurações editáveis pelo painel — permitem mudar regras da loja
+/// (frete grátis, imposto padrão, chave PIX, retirada) sem programar.
+model Setting {
+  key       String   @id
+  value     String
+  updatedAt DateTime @updatedAt
+}
+
+model ActivityLog {
+  id         String   @id @default(cuid())
+  userId     String?
+  actorEmail String?
+  action     String
+  entity     String
+  entityId   String?
+  detail     String?
+  ip         String?
+  createdAt  DateTime @default(now())
+
+  user User? @relation(fields: [userId], references: [id])
+
+  @@index([createdAt])
+}
+
+/// Fila/registro de e-mails transacionais. Se não houver SMTP configurado, o
+/// e-mail é apenas registrado aqui (e no console) — útil para demonstração.
+model EmailLog {
+  id        String   @id @default(cuid())
+  to        String
+  subject   String
+  body      String
+  status    String   @default("REGISTRADO")
+  error     String?
+  createdAt DateTime @default(now())
+}
