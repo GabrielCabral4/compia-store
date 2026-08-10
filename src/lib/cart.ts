@@ -55,7 +55,7 @@ export const EMPTY_CART: LoadedCart = {
   issues: [],
 };
 
-// --- Leitura e escrita do cookie -------------------------------------------
+// Leitura e escrita do cookie
 
 export async function readCartCookie(): Promise<CartLine[]> {
   const store = await cookies();
@@ -93,11 +93,11 @@ export async function writeCartCookie(items: CartLine[]): Promise<void> {
   });
 }
 
-// --- Carrinho resolvido contra o catálogo -----------------------------------
+// Carrinho resolvido contra o catálogo
 
 /**
  * Junta as linhas do cookie com os dados atuais do catálogo e calcula os
- * totais. Preço, estoque e disponibilidade são sempre lidos do banco — o
+ * totais. Preço, estoque e disponibilidade são sempre lidos do banco; o
  * cookie guarda apenas identificador e quantidade.
  */
 export async function loadCart(): Promise<LoadedCart> {

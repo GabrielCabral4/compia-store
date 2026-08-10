@@ -53,7 +53,7 @@ export default async function CartPage() {
       )}
 
       <div className="mt-6 grid gap-6 lg:grid-cols-[1fr_360px]">
-        {/* ----------------------------------------------------------- Itens */}
+        {/* Itens */}
         <section className="card divide-y divide-ink-100">
           {cart.items.map((item) => (
             <article key={item.productId} className="flex gap-4 p-4 sm:p-5">
@@ -105,7 +105,7 @@ export default async function CartPage() {
 
                 {item.outOfStock ? (
                   <p className="mt-2 text-[13px] font-medium text-red-600">
-                    Sem estoque — remova para continuar.
+                    Sem estoque, remova para continuar.
                   </p>
                 ) : (
                   <div className="mt-auto flex flex-wrap items-end justify-between gap-3 pt-3">
@@ -140,7 +140,7 @@ export default async function CartPage() {
           </div>
         </section>
 
-        {/* --------------------------------------------------------- Resumo */}
+        {/* Resumo */}
         <aside className="lg:sticky lg:top-40 lg:self-start">
           <div className="card p-5">
             <h2 className="text-[15px] font-bold text-ink-900">

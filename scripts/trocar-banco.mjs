@@ -6,7 +6,7 @@
  *   node scripts/trocar-banco.mjs sqlite
  *
  * O Prisma não aceita variável de ambiente no campo `provider` do datasource,
- * então a troca precisa ser feita no arquivo do schema — este script faz isso
+ * então a troca precisa ser feita no arquivo do schema; este script faz isso
  * de forma segura, sem depender de edição manual.
  */
 import { readFile, writeFile } from "node:fs/promises";

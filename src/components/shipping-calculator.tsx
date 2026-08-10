@@ -16,7 +16,6 @@ type Quote = {
   description: string;
 };
 
-/** Consulta de frete por CEP exibida na página do produto. */
 export function ShippingCalculator({
   weightGrams,
   subtotalCents,

@@ -97,7 +97,7 @@ export function CheckoutForm({ cart, customer, addresses, pickupLabel }: Props) 
 
   /**
    * Assim que o CEP fica completo, busca o endereço e recalcula o frete. É
-   * disparado pelo próprio evento de digitação — não por efeito colateral.
+   * disparado pelo próprio evento de digitação, não por efeito colateral.
    */
   async function handleCepChange(value: string) {
     setCep(value);
@@ -154,7 +154,7 @@ export function CheckoutForm({ cart, customer, addresses, pickupLabel }: Props) 
       <div className="space-y-6">
         {state && !state.ok && <Alert tone="error">{state.message}</Alert>}
 
-        {/* ------------------------------------------------------- Cliente */}
+        {/* Cliente */}
         <section className="card p-5">
           <h2 className="text-[15px] font-bold text-ink-900">1. Seus dados</h2>
           <div className="mt-4 grid gap-4 sm:grid-cols-2">
@@ -220,14 +220,14 @@ export function CheckoutForm({ cart, customer, addresses, pickupLabel }: Props) 
           )}
         </section>
 
-        {/* ------------------------------------------------------- Entrega */}
+        {/* Entrega */}
         <section className="card p-5">
           <h2 className="text-[15px] font-bold text-ink-900">2. Entrega</h2>
 
           {!cart.hasPhysicalItems ? (
             <div className="mt-4 rounded-xl border border-brand-200 bg-brand-50 p-4 text-[13.5px] text-brand-900">
               Seu pedido contém apenas itens digitais. O link de download é
-              liberado automaticamente após a aprovação do pagamento — não há
+              liberado automaticamente após a aprovação do pagamento. Não há
               frete.
               <input type="hidden" name="shippingMethod" value="DIGITAL" />
             </div>
@@ -412,7 +412,7 @@ export function CheckoutForm({ cart, customer, addresses, pickupLabel }: Props) 
           )}
         </section>
 
-        {/* ----------------------------------------------------- Pagamento */}
+        {/* Pagamento */}
         <section className="card p-5">
           <h2 className="text-[15px] font-bold text-ink-900">3. Pagamento</h2>
 
@@ -584,7 +584,7 @@ export function CheckoutForm({ cart, customer, addresses, pickupLabel }: Props) 
         </section>
       </div>
 
-      {/* ---------------------------------------------------------- Resumo */}
+      {/* Resumo */}
       <aside className="lg:sticky lg:top-40 lg:self-start">
         <div className="card p-5">
           <h2 className="text-[15px] font-bold text-ink-900">Resumo</h2>

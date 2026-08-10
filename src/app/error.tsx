@@ -23,7 +23,7 @@ export default function GlobalError({
         Algo deu errado
       </h1>
       <p className="mt-2 max-w-md text-[15px] text-ink-500">
-        Não foi possível carregar esta página. Tente novamente — se o problema
+        Não foi possível carregar esta página. Tente novamente. Se o problema
         continuar, avise a equipe da editora.
       </p>
       {error.digest && (

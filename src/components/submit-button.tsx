@@ -18,7 +18,6 @@ type Props = {
   pending?: boolean;
 };
 
-/** Botão de envio que mostra estado de carregamento durante a Server Action. */
 export function SubmitButton({
   children,
   pendingLabel = "Enviando…",

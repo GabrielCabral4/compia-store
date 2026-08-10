@@ -16,7 +16,7 @@ function secret(): string {
   return value;
 }
 
-// --- Senhas -----------------------------------------------------------------
+// Senhas
 
 /** Gera o hash de uma senha no formato `scrypt$<salt>$<hash>`. */
 export function hashPassword(password: string): string {
@@ -34,7 +34,7 @@ export function verifyPassword(password: string, stored: string): boolean {
   return timingSafeEqual(derived, expected);
 }
 
-// --- Tokens -----------------------------------------------------------------
+// Tokens
 
 export function randomToken(bytes = 32): string {
   return randomBytes(bytes).toString("base64url");
@@ -45,7 +45,7 @@ export function randomPixKey(): string {
   return randomUUID();
 }
 
-// --- Payloads assinados (carrinho em cookie) --------------------------------
+// Payloads assinados (carrinho em cookie)
 
 export function sign(value: string): string {
   return createHmac("sha256", secret()).update(value).digest("base64url");

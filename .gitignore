@@ -40,9 +40,14 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# variáveis de ambiente — o exemplo deve ser versionado
+# variáveis de ambiente (o exemplo deve ser versionado)
 !.env.example
 
 # banco de dados local (SQLite)
 prisma/*.db
 prisma/*.db-journal
+
+# arquivos de instrucao para assistentes, gerados pelo next dev
+AGENTS.md
+CLAUDE.md
+.claude/

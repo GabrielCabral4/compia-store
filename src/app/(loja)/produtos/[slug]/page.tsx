@@ -131,7 +131,7 @@ export default async function ProductPage(props: PageProps<"/produtos/[slug]">) 
       </nav>
 
       <div className="grid gap-8 lg:grid-cols-[minmax(0,420px)_1fr] lg:gap-12">
-        {/* ------------------------------------------------------------ Capa */}
+        {/* Capa */}
         <div className="lg:sticky lg:top-40 lg:self-start">
           <div className="card overflow-hidden">
             {product.images[0] ? (
@@ -156,7 +156,7 @@ export default async function ProductPage(props: PageProps<"/produtos/[slug]">) 
           </div>
         </div>
 
-        {/* --------------------------------------------------------- Detalhes */}
+        {/* Detalhes */}
         <div>
           <div className="flex flex-wrap items-center gap-2">
             <ProductTypeBadge type={product.type} />
@@ -182,7 +182,7 @@ export default async function ProductPage(props: PageProps<"/produtos/[slug]">) 
             </p>
           )}
 
-          {/* ------------------------------------------------------- Compra */}
+          {/* Compra */}
           <div className="card mt-6 p-5">
             {product.compareAtCents &&
               product.compareAtCents > product.priceCents && (
@@ -229,7 +229,7 @@ export default async function ProductPage(props: PageProps<"/produtos/[slug]">) 
                 )}
                 {isDigital
                   ? "Link de download liberado automaticamente após a aprovação do pagamento."
-                  : `${product.stock} unidade(s) em estoque — envio pelos Correios, transportadora ou retirada no local.`}
+                  : `${product.stock} unidade(s) em estoque. Envio pelos Correios, transportadora ou retirada no local.`}
               </li>
               <li className="flex items-center gap-2">
                 <ShieldIcon className="size-4.5 text-brand-600" />
@@ -245,7 +245,7 @@ export default async function ProductPage(props: PageProps<"/produtos/[slug]">) 
             />
           </div>
 
-          {/* --------------------------------------------- Conteúdo do kit */}
+          {/* Conteúdo do kit */}
           {product.kitItems.length > 0 && (
             <section className="mt-8">
               <h2 className="text-lg font-bold text-ink-900">
@@ -284,7 +284,7 @@ export default async function ProductPage(props: PageProps<"/produtos/[slug]">) 
             </section>
           )}
 
-          {/* ----------------------------------------------------- Descrição */}
+          {/* Descrição */}
           <section className="mt-8">
             <h2 className="text-lg font-bold text-ink-900">Sobre a obra</h2>
             <div className="prose-compia mt-3 max-w-none text-[15px] text-ink-700">
@@ -294,7 +294,7 @@ export default async function ProductPage(props: PageProps<"/produtos/[slug]">) 
             </div>
           </section>
 
-          {/* ------------------------------------------------ Ficha técnica */}
+          {/* Ficha técnica */}
           <section className="mt-8">
             <h2 className="text-lg font-bold text-ink-900">Ficha técnica</h2>
             <dl className="card mt-3 divide-y divide-ink-100 text-[14px]">

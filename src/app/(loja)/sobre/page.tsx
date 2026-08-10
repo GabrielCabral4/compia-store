@@ -44,7 +44,7 @@ export default async function AboutPage() {
           <p className="mt-4 text-[16px] leading-relaxed text-white/75">
             Além de obras autorais e traduções de relevância internacional,
             valorizamos autores nacionais e incentivamos a produção de
-            conhecimento local e atualizado — sendo parceira estratégica de
+            conhecimento local e atualizado, sendo parceira estratégica de
             instituições de ensino, pesquisadores e profissionais de TI.
           </p>
         </div>
@@ -117,7 +117,7 @@ export default async function AboutPage() {
       <section className="container-page pb-16">
         <div className="card p-6">
           <h2 className="text-lg font-bold text-ink-900">
-            Nosso catálogo — {productCount} títulos
+            Nosso catálogo: {productCount} títulos
           </h2>
           <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {categories.map((category) => (

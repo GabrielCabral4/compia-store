@@ -16,7 +16,7 @@ export default async function AccountLayout({ children }: LayoutProps<"/conta">)
   const user = await getCurrentUser();
 
   // As telas de login e cadastro usam este mesmo segmento, mas não exigem
-  // sessão — nesse caso o conteúdo é renderizado sem a navegação lateral.
+  // sessão; nesse caso o conteúdo é renderizado sem a navegação lateral.
   if (!user) return <>{children}</>;
 
   const isStaff = STAFF_ROLES.includes(user.role as Role);

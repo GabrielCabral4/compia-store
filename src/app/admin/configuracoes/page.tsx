@@ -17,8 +17,8 @@ export default async function AdminSettingsPage() {
           Configurações da loja
         </h1>
         <p className="mt-1 text-[14px] text-ink-500">
-          Estes parâmetros valem para toda a loja e são aplicados imediatamente —
-          nenhuma alteração de código é necessária.
+          Estes parâmetros valem para toda a loja e são aplicados imediatamente.
+          Nenhuma alteração de código é necessária.
         </p>
       </header>
 

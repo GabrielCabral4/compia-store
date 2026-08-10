@@ -70,7 +70,6 @@ type OrderLike = {
   }>;
 };
 
-/** Trilha de situações que um pedido físico percorre. */
 const PHYSICAL_FLOW: OrderStatus[] = [
   "PENDENTE_PAGAMENTO",
   "PAGO",

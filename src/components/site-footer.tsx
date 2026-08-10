@@ -65,7 +65,8 @@ export async function SiteFooter() {
           </div>
           <p className="mt-4 text-[13px] leading-relaxed">
             Publicações de alta qualidade em Inteligência Artificial, unindo rigor
-            técnico e linguagem acessível — ponte entre a universidade e o mercado.
+            técnico e linguagem acessível, fazendo a ponte entre a universidade e o
+            mercado.
           </p>
         </div>
 
@@ -142,8 +143,8 @@ export async function SiteFooter() {
       <div className="border-t border-white/10">
         <div className="container-page flex flex-col gap-2 py-5 text-[12px] sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {new Date().getFullYear()} {settings.storeName}. Projeto acadêmico —
-            UFCG / Programação para Web.
+            © {new Date().getFullYear()} {settings.storeName}. Projeto acadêmico da
+            disciplina Programação para Web (UFCG).
           </p>
           <p className="text-white/45">
             Pagamentos processados em ambiente de testes (sandbox).

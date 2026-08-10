@@ -4,9 +4,8 @@ import { isValidCep, normalizeCep } from "@/lib/shipping";
 
 /**
  * Consulta de endereço por CEP (ViaCEP), usada para preencher o formulário de
- * entrega automaticamente. Se o serviço estiver indisponível — por exemplo, em
- * uma máquina sem internet — a loja continua funcionando com preenchimento
- * manual.
+ * entrega automaticamente. Se o serviço estiver fora do ar (por exemplo, numa
+ * máquina sem internet), a loja continua funcionando com preenchimento manual.
  */
 export async function GET(
   _request: Request,

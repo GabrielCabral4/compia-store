@@ -1,10 +1,10 @@
-# COMPIA Editora — Loja Virtual
+# COMPIA Editora | Loja Virtual
 
-Plataforma de e-commerce da **COMPIA Editora**, editora de materiais
-bibliográficos da área de Inteligência Artificial.
+Plataforma de e-commerce da COMPIA Editora, editora de materiais bibliográficos
+da área de Inteligência Artificial.
 
-Projeto da disciplina de **Programação para Web** — UFCG / CEEI / Unidade
-Acadêmica de Sistemas e Computação.
+Projeto da disciplina de Programação para Web, UFCG / CEEI / Unidade Acadêmica
+de Sistemas e Computação.
 
 **Equipe**
 
@@ -14,14 +14,14 @@ Acadêmica de Sistemas e Computação.
 | Vitor Schuler Borges Veloso | 123110668 |
 | Axel Vaz Souto Lima | 122210109 |
 
-**🔗 Loja publicada:** <https://compia-store-mu.vercel.app>
+**Loja publicada:** <https://compia-store-mu.vercel.app>
 **Acesso ao painel:** `admin@compia.com.br` / `compia123`
 
-A loja vende livros físicos, e-books e kits; aceita **PIX** (QR Code com chave
-aleatória) e **cartão de crédito** das principais bandeiras; calcula **frete e
-impostos**; oferece **Correios, transportadora, retirada no local e entrega
-digital automática**; e traz um **painel administrativo** que permite operar a
-loja inteira — inclusive criar produtos e categorias — sem escrever código.
+A loja vende livros físicos, e-books e kits; aceita PIX (QR Code com chave
+aleatória) e cartão de crédito das principais bandeiras; calcula frete e
+impostos; oferece Correios, transportadora, retirada no local e entrega digital
+automática; e traz um painel administrativo que permite operar a loja inteira,
+inclusive criar produtos e categorias, sem escrever código.
 
 ---
 
@@ -30,7 +30,7 @@ loja inteira — inclusive criar produtos e categorias — sem escrever código.
 - [Como rodar](#como-rodar)
 - [Acessos de demonstração](#acessos-de-demonstração)
 - [Como testar cada requisito](#como-testar-cada-requisito)
-- [Requisitos do projeto × implementação](#requisitos-do-projeto--implementação)
+- [Requisitos e implementação](#requisitos-e-implementação)
 - [Arquitetura](#arquitetura)
 - [Modelo de dados](#modelo-de-dados)
 - [Regras de negócio](#regras-de-negócio)
@@ -43,8 +43,8 @@ loja inteira — inclusive criar produtos e categorias — sem escrever código.
 
 ## Como rodar
 
-Pré-requisitos: **Node.js 20.9+** (nada além disso — o banco padrão é SQLite,
-que não precisa de instalação).
+Pré-requisito: Node.js 20.9 ou superior. Nada além disso, porque o banco padrão
+é SQLite e não precisa de instalação.
 
 ```bash
 cd compia-store
@@ -67,15 +67,15 @@ Scripts disponíveis:
 | `npm test` | Executa os testes automatizados |
 | `npm run lint` / `npm run typecheck` | Análise estática e verificação de tipos |
 
-O `seed` gera também as **capas dos livros** (SVG, em `public/covers/`) e os
-**arquivos dos e-books** (PDF, em `storage/ebooks/`), de modo que o fluxo de
+O `seed` gera também as capas dos livros (SVG, em `public/covers/`) e os
+arquivos dos e-books (PDF, em `storage/ebooks/`), de modo que o fluxo de
 download funciona de ponta a ponta sem depender de nenhum arquivo externo.
 
 ---
 
 ## Acessos de demonstração
 
-Senha de todos: **`compia123`**
+Senha de todos: `compia123`
 
 | Perfil | E-mail | Pode |
 | --- | --- | --- |
@@ -96,8 +96,8 @@ Senha de todos: **`compia123`**
 
 Use qualquer validade futura e CVV de 3 dígitos (4 para Amex).
 
-Para o **PIX**, o pedido nasce aguardando pagamento e exibe o QR Code; o botão
-_"Simular confirmação do PIX"_ na página do pedido representa o webhook que o
+No caso do PIX, o pedido nasce aguardando pagamento e exibe o QR Code. O botão
+"Simular confirmação do PIX" na página do pedido representa o webhook que o
 banco enviaria em produção.
 
 ---
@@ -106,52 +106,52 @@ banco enviaria em produção.
 
 Roteiro curto para avaliar a aplicação:
 
-1. **Catálogo e filtros** — em `/produtos`, filtre por categoria, formato
+1. **Catálogo e filtros.** Em `/produtos`, filtre por categoria, formato
    (livro/e-book/kit), etiqueta e faixa de preço; busque por título, autor ou
    ISBN.
-2. **Frete automático** — na página de um livro, informe um CEP (ex.: `01310-100`)
-   e veja PAC, SEDEX e retirada com preço e prazo calculados.
-3. **Compra com cartão** — adicione um livro físico e um e-book ao carrinho,
+2. **Frete automático.** Na página de um livro, informe um CEP (por exemplo,
+   `01310-100`) e veja PAC, SEDEX e retirada com preço e prazo calculados.
+3. **Compra com cartão.** Adicione um livro físico e um e-book ao carrinho,
    faça login como cliente e finalize com `4000 0000 0000 0002` (recusa, para
    ver o tratamento de erro) e depois com `4111 1111 1111 1111` (aprovação).
-4. **Entrega digital** — na mesma tela do pedido aprovado, baixe o e-book; ele
-   também aparece em **Minha biblioteca**.
-5. **Compra com PIX** — repita com PIX, confira o QR Code e o "copia e cola" e
+4. **Entrega digital.** Na mesma tela do pedido aprovado, baixe o e-book. Ele
+   também aparece em Minha biblioteca.
+5. **Compra com PIX.** Repita com PIX, confira o QR Code e o "copia e cola" e
    use o botão de simulação para confirmar o pagamento.
-6. **Gestão de pedidos** — entre como vendedor ou administrador, abra o pedido
+6. **Gestão de pedidos.** Entre como vendedor ou administrador, abra o pedido
    em `/admin/pedidos`, mude a situação e informe o código de rastreio: o
    cliente é notificado por e-mail (visível em `/admin/emails`).
-7. **Escalabilidade sem programação** — como editor, cadastre um produto novo em
+7. **Escalabilidade sem programação.** Como editor, cadastre um produto novo em
    `/admin/produtos/novo` (a capa é gerada automaticamente) e crie uma categoria
-   em `/admin/categorias`; ambos aparecem na loja imediatamente.
-8. **Controle de acesso** — logado como editor, tente abrir `/admin/usuarios`:
-   o acesso é bloqueado. Toda ação relevante fica registrada em `/admin/logs`.
-9. **Responsividade** — reduza a janela para largura de celular: cabeçalho,
+   em `/admin/categorias`. Ambos aparecem na loja imediatamente.
+8. **Controle de acesso.** Logado como editor, tente abrir `/admin/usuarios`: o
+   acesso é bloqueado. Toda ação relevante fica registrada em `/admin/logs`.
+9. **Responsividade.** Reduza a janela para largura de celular: cabeçalho,
    catálogo, checkout e painel se adaptam.
 
 ---
 
-## Requisitos do projeto × implementação
+## Requisitos e implementação
 
 | Requisito da especificação | Onde está |
 | --- | --- |
-| Cadastro, edição e exclusão de produtos (livros, e-books, kits) | `/admin/produtos`, `/admin/produtos/novo` — exclusão vira desativação quando o título já tem vendas, preservando o histórico |
+| Cadastro, edição e exclusão de produtos (livros, e-books, kits) | `/admin/produtos`, `/admin/produtos/novo`. A exclusão vira desativação quando o título já tem vendas, preservando o histórico |
 | Organização por categorias, tags e filtros | `/admin/categorias` e filtros em `/produtos` |
 | Imagens, descrições, preços e estoque | formulário de produto; capa gerada automaticamente quando nenhuma imagem é informada |
 | Adição e remoção de produtos do carrinho | `/carrinho` (carrinho em cookie assinado, funciona sem login) |
-| Cálculo automático de frete e impostos | `src/lib/shipping.ts` e alíquota por produto/loja; resumo do pedido detalha os dois |
-| Checkout simples e responsivo | `/checkout` — dados, entrega e pagamento em uma página |
-| Integração com gateway de pagamento | `src/lib/gateway.ts` — interface `PaymentGateway` com implementação sandbox; trocar por PagSeguro/Mercado Pago/Stripe não afeta as telas |
-| Principais bandeiras (Visa, MasterCard, Elo…) | `src/lib/cards.ts` — detecção de bandeira, Luhn, validade, CVV e parcelamento |
-| PIX com QR Code e chave aleatória | `src/lib/pix.ts` — BR Code no padrão EMV do Banco Central, com CRC16; chave aleatória configurável |
-| Painel administrativo para pedidos | `/admin/pedidos` com filtros por situação e forma de entrega |
-| Notificações automáticas por e-mail | `src/lib/mail.ts` — SMTP quando configurado, sempre registrado em `/admin/emails` |
+| Cálculo automático de frete e impostos | `src/lib/shipping.ts` e alíquota por produto/loja; o resumo do pedido detalha os dois |
+| Checkout simples e responsivo | `/checkout`, com dados, entrega e pagamento em uma página |
+| Integração com gateway de pagamento | `src/lib/gateway.ts`: interface `PaymentGateway` com implementação sandbox. Trocar por PagSeguro/Mercado Pago/Stripe não afeta as telas |
+| Principais bandeiras (Visa, MasterCard, Elo) | `src/lib/cards.ts`: detecção de bandeira, Luhn, validade, CVV e parcelamento |
+| PIX com QR Code e chave aleatória | `src/lib/pix.ts`: BR Code no padrão EMV do Banco Central, com CRC16 e chave aleatória configurável |
+| Painel administrativo para pedidos | `/admin/pedidos`, com filtros por situação e forma de entrega |
+| Notificações automáticas por e-mail | `src/lib/mail.ts`: SMTP quando configurado, sempre registrado em `/admin/emails` |
 | Área do cliente com histórico | `/conta`, `/conta/pedidos`, `/conta/enderecos`, `/conta/dados` |
 | Integração com Correios/transportadoras | cotação PAC, SEDEX e transportadora por região de CEP (`/api/frete`), pronta para trocar pela API real |
 | Retirada no local | opção de entrega configurável em `/admin/configuracoes` |
-| E-books com download automático | `DownloadGrant` + `/api/download/[token]`, com limite de downloads e validade |
-| Painel amigável com menus claros | `src/app/admin` — navegação por seções, formulários rotulados em português |
-| Controle de acesso por perfis | `src/lib/auth.ts` — matriz de permissões por perfil |
+| E-books com download automático | `DownloadGrant` mais `/api/download/[token]`, com limite de downloads e validade |
+| Painel amigável com menus claros | `src/app/admin`: navegação por seções e formulários rotulados em português |
+| Controle de acesso por perfis | `src/lib/auth.ts`: matriz de permissões por perfil |
 | Registro de logs de atividade | `src/lib/logs.ts` e `/admin/logs` |
 | Layout responsivo | Tailwind CSS, verificado de 390 px a 1440 px |
 | Escalabilidade sem programação | produtos, categorias, etiquetas, frete, impostos, PIX e regras de download são todos editáveis pelo painel |
@@ -181,20 +181,19 @@ compia-store/
 └── storage/ebooks/          arquivos entregues aos compradores
 ```
 
-**Stack:** Next.js 16 (App Router, Server Components e Server Actions),
-React 19, TypeScript, Tailwind CSS 4, Prisma ORM e SQLite (PostgreSQL em
-produção).
+Stack: Next.js 16 (App Router, Server Components e Server Actions), React 19,
+TypeScript, Tailwind CSS 4, Prisma ORM e SQLite (PostgreSQL em produção).
 
 Decisões que valem registrar:
 
-- **Regras de negócio em `src/lib`**, não nos componentes. Frete, impostos,
-  PIX, cartões e permissões são funções puras testáveis — a interface apenas
+- Regras de negócio ficam em `src/lib`, não nos componentes. Frete, impostos,
+  PIX, cartões e permissões são funções puras testáveis, e a interface apenas
   as consome.
-- **Dinheiro sempre em centavos (`Int`)**, nunca em ponto flutuante.
-- **O cliente nunca decide valores.** Preço, frete e impostos são recalculados
-  no servidor ao criar o pedido; o carrinho guarda apenas identificador e
+- Dinheiro circula sempre em centavos (`Int`), nunca em ponto flutuante.
+- O cliente nunca decide valores. Preço, frete e impostos são recalculados no
+  servidor ao criar o pedido; o carrinho guarda apenas identificador e
   quantidade.
-- **O gateway de pagamento é uma interface.** A implementação sandbox pode ser
+- O gateway de pagamento é uma interface. A implementação sandbox pode ser
   trocada por um provedor real sem alterar telas nem ações.
 
 ---
@@ -203,20 +202,20 @@ Decisões que valem registrar:
 
 Principais entidades (`prisma/schema.prisma`):
 
-- **User / Session / Address** — contas, sessões no servidor e endereços de
+- **User / Session / Address:** contas, sessões no servidor e endereços de
   entrega. O perfil (`role`) define as permissões.
-- **Category / Tag / Product / ProductImage / KitItem** — catálogo. `KitItem`
+- **Category / Tag / Product / ProductImage / KitItem:** catálogo. `KitItem`
   descreve a composição dos kits.
-- **Order / OrderItem / Payment** — pedidos. Os itens guardam uma *cópia* de
+- **Order / OrderItem / Payment:** pedidos. Os itens guardam uma cópia de
   título, código e preço no momento da compra, de modo que alterações futuras
   no catálogo não reescrevem o histórico.
-- **DownloadGrant** — autorização de download de um e-book, com token, limite
-  de downloads e validade.
-- **Setting** — configurações da loja editáveis pelo painel.
-- **ActivityLog / EmailLog** — auditoria e notificações.
+- **DownloadGrant:** autorização de download de um e-book, com token, limite de
+  downloads e validade.
+- **Setting:** configurações da loja editáveis pelo painel.
+- **ActivityLog / EmailLog:** auditoria e notificações.
 
 Os campos que seriam `enum` estão como `String` porque o SQLite não suporta
-enums no Prisma; os valores válidos ficam centralizados em
+enums no Prisma. Os valores válidos ficam centralizados em
 `src/lib/constants.ts`.
 
 ---
@@ -225,18 +224,18 @@ enums no Prisma; os valores válidos ficam centralizados em
 
 **Frete.** A origem é Campina Grande/PB. O custo combina taxa base, peso do
 pedido e um multiplicador por região de destino, derivado do primeiro dígito do
-CEP — que é como os Correios dividem o território. SEDEX custa 1,8× o PAC com
+CEP, que é como os Correios dividem o território. SEDEX custa 1,8 vez o PAC com
 metade do prazo; transportadora só aparece acima de 3 kg; retirada no local e
 pedidos exclusivamente digitais não têm frete. Todos os parâmetros vêm das
 configurações da loja.
 
-**Impostos.** Cada produto pode ter alíquota própria (em pontos base); sem
+**Impostos.** Cada produto pode ter alíquota própria (em pontos base). Sem
 alíquota definida, vale a alíquota padrão da loja. O valor é calculado item a
 item e destacado no resumo do pedido.
 
 **Estoque.** É reservado na criação do pedido, dentro da mesma transação que o
-grava — dois pedidos simultâneos não conseguem levar a mesma última unidade.
-Cancelar um pedido devolve as unidades.
+grava, então dois pedidos simultâneos não conseguem levar a mesma última
+unidade. Cancelar um pedido devolve as unidades.
 
 **Pagamento.** Cartão é autorizado antes de o pedido ser gravado; recusa não
 cria pedido nem baixa estoque. PIX gera o BR Code e o pedido aguarda a
@@ -250,19 +249,19 @@ modo que só é acessível pelo link autorizado.
 
 ## Segurança
 
-- Senhas com **scrypt** e salt por usuário (`src/lib/crypto.ts`); comparação em
+- Senhas com scrypt e salt por usuário (`src/lib/crypto.ts`), com comparação em
   tempo constante.
-- **Sessões no servidor**, com token opaco em cookie `httpOnly`, `SameSite=Lax`
-  e `Secure` em produção. Desativar um usuário encerra suas sessões.
-- **Carrinho em cookie assinado (HMAC-SHA256)** — adulterar o conteúdo invalida
-  o cookie; ainda assim, preços são sempre relidos do banco.
-- **Permissões por perfil** verificadas *dentro de cada Server Action*, não
-  apenas na navegação.
-- **Pedidos vinculados a uma conta** só podem ser vistos pelo dono ou pela
-  equipe; pedidos de visitante usam número com sufixo aleatório.
-- **Downloads** limitados por token, quantidade e validade, com cada acesso
+- Sessões no servidor, com token opaco em cookie `httpOnly`, `SameSite=Lax` e
+  `Secure` em produção. Desativar um usuário encerra suas sessões.
+- Carrinho em cookie assinado com HMAC-SHA256: adulterar o conteúdo invalida o
+  cookie e, ainda assim, preços são sempre relidos do banco.
+- Permissões por perfil verificadas dentro de cada Server Action, não apenas na
+  navegação.
+- Pedidos vinculados a uma conta só podem ser vistos pelo dono ou pela equipe;
+  pedidos de visitante usam número com sufixo aleatório.
+- Downloads limitados por token, quantidade e validade, com cada acesso
   registrado no log.
-- **Log de atividade** para login, alterações de catálogo, mudanças de pedido,
+- Log de atividade para login, alterações de catálogo, mudanças de pedido,
   pagamentos e downloads.
 
 ---
@@ -280,17 +279,17 @@ o valor de referência do algoritmo), validação de cartões e parcelamento, o
 cálculo de frete em todas as combinações de região/peso/retirada, conversão
 monetária, validação de CPF, hash de senha e integridade do carrinho assinado.
 
-Além disso, o fluxo completo — do catálogo ao download do e-book, passando por
-recusa de cartão, PIX, painel administrativo e bloqueio por perfil — foi
+Além disso, o fluxo completo, do catálogo ao download do e-book, passando por
+recusa de cartão, PIX, painel administrativo e bloqueio por perfil, foi
 verificado no navegador durante o desenvolvimento.
 
 ---
 
 ## Implantação (Vercel)
 
-1. Crie um banco PostgreSQL (Vercel Postgres, Neon, Supabase…).
+1. Crie um banco PostgreSQL (Vercel Postgres, Neon, Supabase).
 2. Em `prisma/schema.prisma`, troque o `provider` do datasource para
-   `postgresql`.
+   `postgresql`. O script `npm run db:postgres` faz isso.
 3. Configure as variáveis de ambiente no projeto da Vercel: `DATABASE_URL`,
    `APP_SECRET`, `NEXT_PUBLIC_SITE_URL` e, opcionalmente, as de SMTP.
 4. Faça o deploy. O `build` já executa `prisma generate`; rode
@@ -298,7 +297,7 @@ verificado no navegador durante o desenvolvimento.
 
 Observação sobre os e-books: o sistema de arquivos das funções serverless é
 somente leitura, então em produção os PDFs devem ficar em armazenamento externo
-(Vercel Blob, S3). A rota de download já trata os dois casos — se
+(Vercel Blob, S3). A rota de download já trata os dois casos: se
 `digitalFileUrl` for uma URL `http(s)`, ela redireciona para lá; se for um
 caminho local, lê o arquivo do disco.
 
@@ -306,16 +305,16 @@ caminho local, lê o arquivo do disco.
 
 ## Decisão sobre a plataforma
 
-A especificação recomenda **WordPress com WooCommerce** e, ao mesmo tempo,
-indica hospedagem na **Vercel** — que executa Node.js e não PHP/MySQL, ou seja,
-não roda WordPress. Optamos por atender à hospedagem indicada e construir a
-plataforma em Next.js, o que preserva todos os requisitos funcionais e ainda
-traz vantagens para a avaliação: o código das regras de negócio (frete, PIX,
-impostos, permissões) fica explícito e testável, em vez de escondido atrás da
+A especificação recomenda WordPress com WooCommerce e, ao mesmo tempo, indica
+hospedagem na Vercel, que executa Node.js e não PHP/MySQL, ou seja, não roda
+WordPress. Optamos por atender à hospedagem indicada e construir a plataforma
+em Next.js, o que preserva todos os requisitos funcionais e ainda traz uma
+vantagem para a avaliação: o código das regras de negócio (frete, PIX, impostos,
+permissões) fica explícito e testável, em vez de escondido atrás da
 configuração de plugins.
 
-O requisito que motiva a escolha do WooCommerce — *"suporte a novos produtos e
-categorias sem necessidade de programação"* — é atendido pelo painel
+O requisito que motiva a escolha do WooCommerce, "suporte a novos produtos e
+categorias sem necessidade de programação", é atendido pelo painel
 administrativo: produtos, categorias, etiquetas, preços, estoque, frete,
 impostos, chave PIX, retirada e regras de download são todos editáveis pela
 interface, por pessoas sem conhecimento técnico.

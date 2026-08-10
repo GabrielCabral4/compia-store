@@ -164,7 +164,7 @@ export default async function CatalogPage(props: PageProps<"/produtos">) {
       </header>
 
       <div className="grid gap-8 lg:grid-cols-[260px_1fr]">
-        {/* -------------------------------------------------------- Filtros */}
+        {/* Filtros */}
         <aside className="lg:sticky lg:top-40 lg:self-start">
           <div className="card p-5">
             <h2 className="mb-4 text-[13px] font-bold uppercase tracking-wider text-ink-500">
@@ -305,7 +305,7 @@ export default async function CatalogPage(props: PageProps<"/produtos">) {
           </div>
         </aside>
 
-        {/* -------------------------------------------------------- Resultados */}
+        {/* Resultados */}
         <section>
           {products.length === 0 ? (
             <EmptyState

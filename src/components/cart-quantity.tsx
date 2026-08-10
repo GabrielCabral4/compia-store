@@ -4,7 +4,6 @@ import { useTransition } from "react";
 
 import { setQuantityAction } from "@/actions/cart";
 
-/** Controle de quantidade de um item do carrinho. */
 export function CartQuantity({
   productId,
   quantity,

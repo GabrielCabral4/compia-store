@@ -54,7 +54,7 @@ export const DEFAULT_SETTINGS: StoreSettings = {
 
   pickupEnabled: true,
   pickupAddress:
-    "Rua Aprígio Veloso, 882 — Bloco CO, Bodocongó, Campina Grande/PB",
+    "Rua Aprígio Veloso, 882, Bloco CO, Bodocongó, Campina Grande/PB",
   pickupHours: "Segunda a sexta, 8h às 17h",
 
   downloadMaxPerItem: 5,

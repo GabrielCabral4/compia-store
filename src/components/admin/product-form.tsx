@@ -204,7 +204,7 @@ export function ProductForm({
           <Field
             label="Preço de comparação"
             name="compareAt"
-            hint="Opcional — exibido riscado."
+            hint="Opcional, exibido riscado."
           >
             <input
               id="compareAt"

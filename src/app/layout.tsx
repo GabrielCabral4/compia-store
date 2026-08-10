@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "COMPIA Editora — Livros de Inteligência Artificial",
+    default: "COMPIA Editora | Livros de Inteligência Artificial",
     template: "%s | COMPIA Editora",
   },
   description:

@@ -32,7 +32,7 @@ function field(id: string, value: string): string {
   return `${id}${String(value.length).padStart(2, "0")}${value}`;
 }
 
-/** CRC16/CCITT-FALSE — polinômio 0x1021, valor inicial 0xFFFF. */
+/** CRC16/CCITT-FALSE, polinômio 0x1021 e valor inicial 0xFFFF. */
 export function crc16(payload: string): string {
   let crc = 0xffff;
   for (let i = 0; i < payload.length; i++) {
@@ -61,7 +61,7 @@ export function buildPixPayload(input: PixInput): string {
   const payload =
     field("00", "01") + // Payload Format Indicator
     field("01", "12") + // Point of Initiation: cobrança de uso único
-    field("26", merchantAccount) + // Merchant Account Information — PIX
+    field("26", merchantAccount) + // Merchant Account Information (PIX)
     field("52", "0000") + // Merchant Category Code
     field("53", "986") + // Moeda: BRL
     field("54", amount) +

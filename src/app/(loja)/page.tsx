@@ -59,7 +59,7 @@ export default async function HomePage() {
 
   return (
     <div className="pb-16">
-      {/* ---------------------------------------------------------------- Hero */}
+      {/* Hero */}
       <section className="bg-ink-950 text-white">
         <div className="container-page grid items-center gap-10 py-14 lg:grid-cols-[1.1fr_0.9fr] lg:py-20">
           <div>
@@ -76,7 +76,7 @@ export default async function HomePage() {
 
             <p className="mt-5 max-w-xl text-[16px] leading-relaxed text-white/70">
               Livros físicos, e-books e kits sobre IA, arquitetura de software
-              inteligente, blockchain, criptografia e cibersegurança — publicados
+              inteligente, blockchain, criptografia e cibersegurança, publicados
               pela {settings.storeName} para estudantes, pesquisadores e
               profissionais.
             </p>
@@ -144,11 +144,11 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* ---------------------------------------------------------- Categorias */}
+      {/* Categorias */}
       <section className="container-page py-12">
         <SectionHeading
           title="Navegue por área"
-          description="O catálogo é organizado em categorias e etiquetas — novas áreas podem ser criadas pelo painel, sem programação."
+          description="O catálogo é organizado em categorias e etiquetas. Novas áreas podem ser criadas pelo painel, sem programação."
         />
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {categories.map((category) => (
@@ -173,7 +173,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* ----------------------------------------------------------- Destaques */}
+      {/* Destaques */}
       {featured.length > 0 && (
         <section className="container-page py-6">
           <SectionHeading
@@ -193,7 +193,7 @@ export default async function HomePage() {
         </section>
       )}
 
-      {/* -------------------------------------------------------------- Faixa */}
+      {/* Faixa */}
       <section className="container-page py-10">
         <div className="grid gap-4 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-ink-200 sm:grid-cols-3">
           {[
@@ -226,7 +226,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* -------------------------------------------------------------- Ebooks */}
+      {/* Ebooks */}
       {ebooks.length > 0 && (
         <section className="container-page py-6">
           <SectionHeading
@@ -246,7 +246,7 @@ export default async function HomePage() {
         </section>
       )}
 
-      {/* ---------------------------------------------------------- Lançamentos */}
+      {/* Lançamentos */}
       <section className="container-page py-6">
         <SectionHeading
           title="Publicações recentes"

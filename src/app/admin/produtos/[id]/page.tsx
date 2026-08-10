@@ -69,7 +69,7 @@ export default async function EditProductPage(
         <h2 className="text-[15px] font-bold text-red-700">Excluir produto</h2>
         <p className="mt-1 text-[13.5px] text-ink-600">
           {product._count.orderItems > 0
-            ? "Este título já foi vendido, portanto será apenas ocultado da loja — o histórico de pedidos é preservado."
+            ? "Este título já foi vendido, portanto será apenas ocultado da loja; o histórico de pedidos é preservado."
             : "Esta ação não pode ser desfeita."}
         </p>
         <form action={deleteProductAction} className="mt-4">

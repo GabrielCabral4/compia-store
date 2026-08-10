@@ -7,7 +7,7 @@ import type { StoreSettings } from "./settings";
  *
  * A origem é Campina Grande/PB (faixa de CEP 58xxx-xxx). O custo combina uma
  * taxa base, o peso do pedido e um multiplicador por região de destino,
- * derivado do primeiro dígito do CEP — que é como os Correios organizam o
+ * derivado do primeiro dígito do CEP, que é como os Correios organizam o
  * território nacional. Os parâmetros base/por-quilo e o piso de frete grátis
  * vêm das configurações da loja, portanto podem ser ajustados pelo painel sem
  * alterar o código.
@@ -120,7 +120,7 @@ export function quoteShipping(input: ShippingInput): ShippingQuote[] {
       cents: freeShipping ? 0 : pacCents,
       etaDays: 5 + zone.extraDays,
       description: freeShipping
-        ? `Frete grátis para ${zone.name} — entrega econômica.`
+        ? `Frete grátis para ${zone.name}, entrega econômica.`
         : `Entrega econômica para ${zone.name}.`,
     });
 
@@ -145,7 +145,7 @@ export function quoteShipping(input: ShippingInput): ShippingQuote[] {
             zone.multiplier
         ),
         etaDays: 8 + zone.extraDays,
-        description: `Indicada para pedidos acima de 3 kg — ${zone.name}.`,
+        description: `Indicada para pedidos acima de 3 kg, ${zone.name}.`,
       });
     }
   }

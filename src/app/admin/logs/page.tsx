@@ -39,8 +39,8 @@ export default async function AdminLogsPage(props: PageProps<"/admin/logs">) {
           Logs de atividade
         </h1>
         <p className="mt-1 text-[14px] text-ink-500">
-          Registro de acessos, alterações de catálogo, pedidos e pagamentos —
-          exibindo os {PAGE_SIZE} eventos mais recentes.
+          Registro de acessos, alterações de catálogo, pedidos e pagamentos,
+          com os {PAGE_SIZE} eventos mais recentes.
         </p>
       </header>
 

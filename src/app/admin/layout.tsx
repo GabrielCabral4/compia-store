@@ -85,7 +85,7 @@ export default async function AdminLayout({ children }: LayoutProps<"/admin">) {
 
   return (
     <div className="flex min-h-screen flex-col bg-ink-50 lg:flex-row">
-      {/* ------------------------------------------------------- Navegação */}
+      {/* Navegação */}
       <aside className="bg-ink-950 text-white lg:sticky lg:top-0 lg:flex lg:h-screen lg:w-64 lg:shrink-0 lg:flex-col">
         <div className="flex items-center justify-between gap-3 px-5 py-4 lg:block">
           <Link href="/admin" className="flex items-center gap-2.5">

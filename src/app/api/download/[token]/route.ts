@@ -64,7 +64,7 @@ export async function GET(
     action: "DOWNLOAD",
     entity: "DownloadGrant",
     entityId: grant.id,
-    detail: `${grant.product.title} — pedido ${grant.order.number} (${
+    detail: `${grant.product.title} / pedido ${grant.order.number} (${
       grant.downloadCount + 1
     }/${grant.maxDownloads})`,
     userId: grant.userId,

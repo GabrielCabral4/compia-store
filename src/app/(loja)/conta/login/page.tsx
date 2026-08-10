@@ -37,16 +37,16 @@ export default async function LoginPage(props: PageProps<"/conta/login">) {
           </p>
           <ul className="mt-2 space-y-0.5">
             <li>
-              <code>admin@compia.com.br</code> — administrador
+              <code>admin@compia.com.br</code> (administrador)
             </li>
             <li>
-              <code>editor@compia.com.br</code> — editor (catálogo)
+              <code>editor@compia.com.br</code> (editor de catálogo)
             </li>
             <li>
-              <code>vendedor@compia.com.br</code> — vendedor (pedidos)
+              <code>vendedor@compia.com.br</code> (vendedor, cuida dos pedidos)
             </li>
             <li>
-              <code>cliente@compia.com.br</code> — cliente
+              <code>cliente@compia.com.br</code> (cliente)
             </li>
           </ul>
         </div>

@@ -1,6 +1,6 @@
 /**
  * Popula o banco com o catálogo inicial, os usuários de demonstração e alguns
- * pedidos de exemplo — para que o painel administrativo já tenha o que mostrar.
+ * pedidos de exemplo, para que o painel administrativo já tenha o que mostrar.
  *
  *   npm run db:seed
  */
@@ -195,7 +195,7 @@ async function seedCatalog() {
       await writeFile(
         path.join(EBOOKS_DIR, item.digitalFileName),
         buildSimplePdf(item.title, [
-          `${item.subtitle} — COMPIA Editora`,
+          `${item.subtitle} - COMPIA Editora`,
           item.author ? `Autoria: ${item.author}` : "COMPIA Editora",
           "",
           item.description,

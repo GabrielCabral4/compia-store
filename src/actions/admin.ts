@@ -21,9 +21,7 @@ import {
   type OrderStatus,
 } from "@/lib/constants";
 
-// ===========================================================================
-// Catálogo — produtos
-// ===========================================================================
+// Produtos
 
 const productSchema = z.object({
   id: z.string().optional(),
@@ -199,7 +197,7 @@ export async function saveProductAction(
         action: "PRODUTO_ATUALIZADO",
         entity: "Product",
         entityId: data.id,
-        detail: `${data.sku} — ${data.title}`,
+        detail: `${data.sku} - ${data.title}`,
         userId: user.id,
         actorEmail: user.email,
       });
@@ -216,7 +214,7 @@ export async function saveProductAction(
         action: "PRODUTO_CRIADO",
         entity: "Product",
         entityId: created.id,
-        detail: `${created.sku} — ${created.title}`,
+        detail: `${created.sku} - ${created.title}`,
         userId: user.id,
         actorEmail: user.email,
       });
@@ -294,9 +292,7 @@ export async function deleteProductAction(formData: FormData): Promise<void> {
   redirect("/admin/produtos");
 }
 
-// ===========================================================================
-// Catálogo — categorias
-// ===========================================================================
+// Categorias
 
 const categorySchema = z.object({
   id: z.string().optional(),
@@ -382,9 +378,7 @@ export async function deleteCategoryAction(formData: FormData): Promise<void> {
   revalidatePath("/", "layout");
 }
 
-// ===========================================================================
 // Pedidos
-// ===========================================================================
 
 export async function updateOrderAction(
   _state: ActionState,
@@ -425,9 +419,7 @@ export async function updateOrderAction(
   }
 }
 
-// ===========================================================================
 // Usuários e perfis
-// ===========================================================================
 
 const staffSchema = z.object({
   id: z.string().optional(),
@@ -524,9 +516,7 @@ export async function toggleUserAction(formData: FormData): Promise<void> {
   revalidatePath("/admin/usuarios");
 }
 
-// ===========================================================================
 // Configurações da loja
-// ===========================================================================
 
 export async function saveSettingsAction(
   _state: ActionState,

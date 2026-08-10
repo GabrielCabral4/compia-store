@@ -1,9 +1,9 @@
-// COMPIA Editora — modelo de dados da loja virtual
+// COMPIA Editora: modelo de dados da loja virtual
 //
 // Observação: os campos de "enum" são String porque o SQLite (banco usado em
 // desenvolvimento) não suporta enums no Prisma. Os valores válidos estão
 // centralizados em src/lib/constants.ts. Ao migrar para PostgreSQL basta trocar
-// o `provider` do datasource abaixo — nenhum modelo precisa mudar.
+// o `provider` do datasource abaixo; nenhum modelo precisa mudar.
 //
 // Valores monetários são sempre inteiros em CENTAVOS, evitando erros de
 // arredondamento de ponto flutuante.
@@ -291,7 +291,7 @@ model DownloadGrant {
 // Operação da loja
 // ---------------------------------------------------------------------------
 
-/// Configurações editáveis pelo painel — permitem mudar regras da loja
+/// Configurações editáveis pelo painel, que permitem mudar regras da loja
 /// (frete grátis, imposto padrão, chave PIX, retirada) sem programar.
 model Setting {
   key       String   @id
@@ -316,7 +316,7 @@ model ActivityLog {
 }
 
 /// Fila/registro de e-mails transacionais. Se não houver SMTP configurado, o
-/// e-mail é apenas registrado aqui (e no console) — útil para demonstração.
+/// e-mail é apenas registrado aqui (e no console), útil para demonstração.
 model EmailLog {
   id        String   @id @default(cuid())
   to        String

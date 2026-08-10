@@ -13,7 +13,7 @@ type LogInput = {
 
 /**
  * Registra uma atividade relevante (requisito de auditoria). Nunca deve
- * interromper a operação principal — falhas de log são silenciadas.
+ * interromper a operação principal, então falhas de log são silenciadas.
  */
 export async function logActivity(input: LogInput): Promise<void> {
   try {

@@ -37,7 +37,7 @@ import {
 
 /**
  * Recalcula as opções de frete no servidor. É usada tanto pela tela de
- * checkout (ao digitar o CEP) quanto pela criação do pedido — o valor enviado
+ * checkout (ao digitar o CEP) quanto pela criação do pedido; o valor enviado
  * pelo navegador nunca é aceito diretamente.
  */
 export async function quoteShippingAction(cep: string): Promise<{
@@ -306,7 +306,7 @@ export async function placeOrderAction(
       action: "PEDIDO_CRIADO",
       entity: "Order",
       entityId: order.id,
-      detail: `${order.number} — ${formatCents(totalCents)} — ${
+      detail: `${order.number} / ${formatCents(totalCents)} / ${
         SHIPPING_METHOD_LABEL[method]
       }`,
       userId: user?.id ?? null,
@@ -320,7 +320,7 @@ export async function placeOrderAction(
       statusLabel: ORDER_STATUS_LABEL.PENDENTE_PAGAMENTO,
       itemLines: cart.items.map(
         (item) =>
-          `${item.availableQuantity}× ${item.title} — ${formatCents(
+          `${item.availableQuantity}× ${item.title} - ${formatCents(
             item.lineTotalCents
           )}`
       ),
@@ -348,7 +348,7 @@ export async function placeOrderAction(
 }
 
 /**
- * Confirmação manual do PIX na sandbox — equivale ao webhook que o banco
+ * Confirmação manual do PIX na sandbox. Equivale ao webhook que o banco
  * enviaria. Disponível na própria página do pedido para permitir o teste.
  */
 export async function confirmPixAction(formData: FormData): Promise<void> {

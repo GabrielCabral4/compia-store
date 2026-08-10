@@ -90,7 +90,7 @@ export default async function AdminEmailsPage() {
               <div
                 className="overflow-x-auto rounded-lg bg-white"
                 // O conteúdo é gerado pela própria aplicação (src/lib/mail.ts),
-                // a partir de modelos fixos — não há entrada de terceiros.
+                // a partir de modelos fixos, não há entrada de terceiros.
                 dangerouslySetInnerHTML={{ __html: email.body }}
               />
             </div>

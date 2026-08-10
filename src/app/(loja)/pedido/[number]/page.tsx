@@ -95,7 +95,7 @@ export default async function OrderPage(props: PageProps<"/pedido/[number]">) {
         <OrderTimeline order={order} />
       </div>
 
-      {/* ------------------------------------------------------------- PIX */}
+      {/* PIX */}
       {isPixPending && payment?.pixPayload && (
         <section className="card mb-6 overflow-hidden">
           <div className="border-b border-ink-100 bg-brand-50 px-5 py-3">

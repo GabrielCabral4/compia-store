@@ -167,7 +167,7 @@ export async function logoutAction(): Promise<void> {
   redirect("/");
 }
 
-// --- Perfil e endereços -----------------------------------------------------
+// Perfil e endereços
 
 const profileSchema = z.object({
   name: nameSchema,

@@ -12,9 +12,9 @@ disciplina.
 | Código-fonte da plataforma | pronto | este repositório |
 | Documentação técnica (arquitetura, regras de negócio, segurança) | pronta | [`README.md`](../README.md) |
 | Roteiro de avaliação passo a passo | pronto | seção "Como testar cada requisito" do `README.md` |
-| Mapa requisito × implementação | pronto | seção "Requisitos do projeto × implementação" do `README.md` |
+| Mapa requisito/implementação | pronto | seção "Requisitos e implementação" do `README.md` |
 | Testes automatizados | 27 testes | `npm test` |
-| Loja publicada com HTTPS | **a fazer por você** | seção 3 deste guia |
+| Loja publicada com HTTPS | pronta | <https://compia-store-mu.vercel.app> |
 | Identificação da equipe | pronta | tabela no topo do `README.md` |
 
 ---
@@ -24,7 +24,7 @@ disciplina.
 ### 2.1 Identificação da equipe
 
 A especificação não define formato de entrega nem exige identificação em lugar
-específico — mas, como ela vem com a capa institucional da UFCG, os nomes da
+específico. Mas, como ela vem com a capa institucional da UFCG, os nomes da
 equipe estão no topo do `README.md`, que é o primeiro arquivo visto ao abrir o
 repositório.
 
@@ -54,7 +54,7 @@ npm run typecheck && npm run lint && npm test && npm run build
 ## 3. Publicar na Vercel (hospedagem recomendada pela especificação)
 
 A especificação indica <https://vercel.com/new> como hospedagem. A Vercel roda
-Node.js e não oferece MySQL, então a loja usa **PostgreSQL** em produção — a
+Node.js e não oferece MySQL, então a loja usa PostgreSQL em produção, e a
 troca é automatizada.
 
 ### 3.1 Suba o código para o GitHub
@@ -86,7 +86,7 @@ Em **Settings → Environment Variables**:
 | `APP_SECRET` | o segredo gerado no passo 2.2 |
 | `NEXT_PUBLIC_SITE_URL` | `https://seu-projeto.vercel.app` |
 
-As variáveis de SMTP são opcionais — sem elas, os e-mails ficam registrados em
+As variáveis de SMTP são opcionais. Sem elas, os e-mails ficam registrados em
 `/admin/emails`, o que já demonstra o requisito de notificação.
 
 ### 3.4 Prepare o banco de produção
@@ -113,10 +113,10 @@ A Vercel refaz o deploy sozinha. O HTTPS já vem habilitado.
 
 Duas estratégias, escolha uma:
 
-- **Branch de produção** (recomendada): mantenha `main` com SQLite — assim
-  qualquer pessoa roda o projeto com `npm run setup`, sem instalar banco — e
-  crie uma branch `producao` com o schema em PostgreSQL, apontando a Vercel para
-  ela em *Settings → Git → Production Branch*.
+- Branch de produção (recomendada): mantenha `main` com SQLite, para que
+  qualquer pessoa rode o projeto com `npm run setup` sem instalar banco, e crie
+  uma branch `producao` com o schema em PostgreSQL, apontando a Vercel para ela
+  em Settings > Git > Production Branch.
 
   ```bash
   git checkout -b producao
@@ -126,13 +126,13 @@ Duas estratégias, escolha uma:
   git checkout main          # main continua em SQLite
   ```
 
-- **Só PostgreSQL**: mantenha o schema em `postgresql` e informe no README que o
+- Só PostgreSQL: mantenha o schema em `postgresql` e informe no README que o
   projeto precisa de uma `DATABASE_URL` PostgreSQL para rodar localmente.
 
 ### 3.6 Sobre os arquivos dos e-books
 
 Os PDFs de demonstração ficam em `storage/ebooks/` e são incluídos
-automaticamente no pacote enviado à Vercel — o download funciona no site
+automaticamente no pacote enviado à Vercel, então o download funciona no site
 publicado. Se no futuro a editora subir arquivos grandes, basta gravar uma URL
 completa no campo *Caminho ou URL do arquivo* do produto: a rota de download já
 redireciona para armazenamento externo (S3, Vercel Blob) nesse caso.
@@ -162,7 +162,7 @@ Abra o site publicado e confirme, nesta ordem:
 
 1. **Link do site publicado** (Vercel, com HTTPS).
 2. **Link do repositório** no GitHub.
-3. **Credenciais de demonstração** — as da tabela do `README.md`; destaque
+3. **Credenciais de demonstração:** as da tabela do `README.md`. Destaque
    `admin@compia.com.br` / `compia123` para ele avaliar o painel.
 4. **Um parágrafo de contexto**, sugestão:
 
@@ -183,4 +183,4 @@ Abra o site publicado e confirme, nesta ordem:
 | Item | Como foi atendido |
 | --- | --- |
 | Gateway de pagamento com PIX e cartões | `src/lib/gateway.ts` (interface trocável) + `src/lib/pix.ts` (BR Code EMV com CRC-16) + `src/lib/cards.ts` (bandeiras, Luhn, parcelamento) |
-| Integração com Correios/transportadoras | `src/lib/shipping.ts` e `/api/frete` — PAC, SEDEX e transportadora com preço e prazo por região de CEP, além de retirada no local |
+| Integração com Correios/transportadoras | `src/lib/shipping.ts` e `/api/frete`: PAC, SEDEX e transportadora com preço e prazo por região de CEP, além de retirada no local |

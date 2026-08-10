@@ -17,9 +17,7 @@ export type SessionUser = {
   role: Role;
 };
 
-// ---------------------------------------------------------------------------
 // Permissões por perfil
-// ---------------------------------------------------------------------------
 
 export const PERMISSIONS = {
   "admin:access": ["ADMIN", "EDITOR", "VENDEDOR"],
@@ -41,9 +39,7 @@ export function can(
   return (PERMISSIONS[permission] as readonly Role[]).includes(user.role);
 }
 
-// ---------------------------------------------------------------------------
 // Ciclo de vida da sessão
-// ---------------------------------------------------------------------------
 
 export async function createSession(userId: string): Promise<void> {
   const token = randomToken();

@@ -28,7 +28,7 @@ export default async function AdminCategoriesPage() {
           Categorias e etiquetas
         </h1>
         <p className="mt-1 text-[14px] text-ink-500">
-          Novas áreas do catálogo podem ser criadas aqui, sem programação — elas
+          Novas áreas do catálogo podem ser criadas aqui, sem programação; elas
           aparecem automaticamente no menu, na home e nos filtros.
         </p>
       </header>

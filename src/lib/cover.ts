@@ -3,7 +3,7 @@
  *
  * Usado pelo seed e pelo painel administrativo: ao cadastrar um título sem
  * informar imagem, a loja cria uma capa a partir do próprio texto e a guarda
- * como data URI — assim o cadastro funciona sem upload de arquivos e sem
+ * como data URI. Assim o cadastro funciona sem upload de arquivos e sem
  * depender de imagens externas.
  */
 

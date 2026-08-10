@@ -3,14 +3,12 @@
  *
  * A interface abaixo isola a loja do provedor: para integrar PagSeguro, Mercado
  * Pago ou Stripe de verdade basta implementar `PaymentGateway` com as chamadas
- * HTTP do provedor — nenhuma tela ou Server Action precisa mudar.
+ * HTTP do provedor. Nenhuma tela ou Server Action precisa mudar.
  *
- * REGRAS DA SANDBOX (para demonstração e testes), no mesmo estilo dos cartões
- * de teste publicados pelos gateways reais:
- *   • Cartões da lista DECLINED_TEST_CARDS → RECUSADO, com o motivo indicado.
- *   • Demais cartões válidos pelo algoritmo de Luhn → APROVADO na hora.
- *   • PIX → fica AGUARDANDO até a confirmação do banco (na loja, simulada pelo
- *     botão da página do pedido).
+ * Como na sandbox dos gateways reais, o resultado depende do cartão usado: os
+ * números listados em DECLINED_TEST_CARDS são sempre recusados, e os demais,
+ * desde que válidos pelo Luhn, são aprovados na hora. O PIX fica aguardando a
+ * confirmação do banco, simulada pelo botão da página do pedido.
  */
 
 import { randomToken } from "./crypto";
@@ -51,7 +49,7 @@ export interface PaymentGateway {
 }
 
 /**
- * Cartões de teste que sempre resultam em recusa — permitem demonstrar o
+ * Cartões de teste que sempre resultam em recusa, para demonstrar o
  * tratamento de erro do checkout. Todos passam pelo algoritmo de Luhn, como
  * cartões reais.
  */

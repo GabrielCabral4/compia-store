@@ -124,7 +124,7 @@ export async function approvePayment(orderId: string): Promise<void> {
     action: "PAGAMENTO_APROVADO",
     entity: "Order",
     entityId: order.id,
-    detail: `Pedido ${order.number} — ${formatCents(order.totalCents)}`,
+    detail: `Pedido ${order.number} / ${formatCents(order.totalCents)}`,
     userId: order.userId,
     actorEmail: order.customerEmail,
   });

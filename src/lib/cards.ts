@@ -55,7 +55,7 @@ export function detectBrand(cardNumber: string): CardBrand | null {
   return null;
 }
 
-/** Algoritmo de Luhn — confere o dígito verificador do cartão. */
+/** Algoritmo de Luhn: confere o dígito verificador do cartão. */
 export function isValidCardNumber(cardNumber: string): boolean {
   const digits = onlyDigits(cardNumber);
   if (digits.length < 13 || digits.length > 19) return false;

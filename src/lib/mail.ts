@@ -6,8 +6,8 @@ import { prisma } from "./prisma";
  * Envio de e-mails transacionais.
  *
  * Com SMTP configurado (SMTP_HOST/SMTP_USER/SMTP_PASS) o e-mail é enviado de
- * verdade. Sem SMTP — caso da avaliação em ambiente local — a mensagem é
- * gravada na tabela EmailLog e impressa no console, ficando visível em
+ * verdade. Sem SMTP, que é o caso da avaliação em ambiente local, a mensagem
+ * é gravada na tabela EmailLog e impressa no console, ficando visível em
  * /admin/emails. O restante do sistema não precisa saber a diferença.
  */
 
@@ -47,7 +47,7 @@ export async function sendEmail({ to, subject, html }: SendInput): Promise<void>
       console.error("[mail] falha no envio:", error);
     }
   } else {
-    console.info(`[mail] (sem SMTP) para ${to} — ${subject}`);
+    console.info(`[mail] (sem SMTP) para ${to}: ${subject}`);
   }
 
   try {
@@ -59,7 +59,7 @@ export async function sendEmail({ to, subject, html }: SendInput): Promise<void>
   }
 }
 
-// --- Modelos de mensagem ----------------------------------------------------
+// Modelos de mensagem
 
 function layout(title: string, content: string): string {
   return `
@@ -74,7 +74,7 @@ function layout(title: string, content: string): string {
       ${content}
     </div>
     <div style="padding:16px 24px;background:#f8fafc;color:#64748b;font-size:12px">
-      Esta é uma mensagem automática — não responda a este e-mail.
+      Esta é uma mensagem automática, não responda a este e-mail.
     </div>
   </div>
 </div>`;
@@ -106,7 +106,7 @@ export function orderPlacedEmail(data: OrderEmailData) {
     html: layout(
       `Recebemos seu pedido, ${data.customerName}!`,
       `
-      <p>Pedido <strong>${data.number}</strong> — situação: <strong>${data.statusLabel}</strong>.</p>
+      <p>Pedido <strong>${data.number}</strong>, situação: <strong>${data.statusLabel}</strong>.</p>
       <ul style="padding-left:18px;margin:12px 0">${data.itemLines
         .map((line) => `<li>${line}</li>`)
         .join("")}</ul>
@@ -119,7 +119,7 @@ export function orderPlacedEmail(data: OrderEmailData) {
 
 export function paymentApprovedEmail(data: OrderEmailData) {
   return {
-    subject: `Pagamento aprovado — pedido ${data.number}`,
+    subject: `Pagamento aprovado - pedido ${data.number}`,
     html: layout(
       "Pagamento aprovado!",
       `
